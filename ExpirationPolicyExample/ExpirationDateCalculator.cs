@@ -21,15 +21,14 @@ namespace ExpirationPolicies.ExpirationPolicyExample
 
         public override DateTime? ComputeExpireDate(SPListItem item, XmlNode parametersData)
         {
-            /* if (Expired)
-            {
-                return DateTime.Now;
-            }
-            else
-            {
-                return null;
-            }
-			*/
+            if (item["Status"] == "Completed")
+			{
+				return DateTime.Now;
+			}
+			else
+			{
+				return null;
+			}
         }
     }
 }

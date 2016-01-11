@@ -23,13 +23,10 @@ namespace ExpirationPolicies.ExpirationPolicyExample
 
         public override void OnExpiration(SPListItem item, XmlNode parametersData, DateTime expiredDate)
         {
-            try
-            {
-				/* Expiration action */
-            }
-            catch (Exception ex)
-            {
-            }
+           item["Status"] = "Expired";
+		   item["ExpiredDate"] = expiredDate;
+		   
+		   item.Update();
         }
     }
 }

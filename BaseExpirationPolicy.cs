@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace ExpirationPolicies
 {
-    public abstract class BaseExpirationPolicy
+    public abstract class BaseExpirationPolicy<TFormula, TAction>
+        where TFormula : BaseExpirationPolicyActionExpirationDateCalculator, new()
+        where TAction : BaseExpirationPolicyActionExpirationAction, new()
     {
-        protected BaseExpirationPolicyActionExpirationDateCalculator _expirationDateCalculator = null;
-        protected BaseExpirationPolicyActionExpirationAction _expirationAction = null;
+        protected TFormula _expirationDateCalculator = null;
+        protected TAction _expirationAction = null;
 
-        public BaseExpirationPolicyActionExpirationDateCalculator ExpirationDateCalculator
+        public TFormula ExpirationDateCalculator
         {
             get
             {
@@ -23,7 +25,7 @@ namespace ExpirationPolicies
                 _expirationDateCalculator = value;
             }
         }
-        public BaseExpirationPolicyActionExpirationAction ExpirationAction
+        public TAction ExpirationAction
         {
             get
             {

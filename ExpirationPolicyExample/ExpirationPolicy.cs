@@ -10,28 +10,28 @@ using System.Threading.Tasks;
 
 namespace ExpirationPolicies.ExpirationPolicyExample
 {
-    public class ExpirationPolicy : BaseExpirationPolicy
+    public class ExpirationPolicy : BaseExpirationPolicy<ExpirationDateCalculator, ExpirationAction>
     {
-		public static readonly string AOPDocumentExpirationFormulaId = "ExpirationPolicy.Formula";
-        public static readonly string AOPDocumentExpirationFormulaName = "ExpirationPolicy.DateCalculator";
-        public static readonly string AOPDocumentExpirationFormulaDescription = "Checks if item is expired";
+		public static readonly string ItemExpirationFormulaId = "ExpirationPolicy.Formula";
+        public static readonly string ItemExpirationFormulaName = "ExpirationPolicy.DateCalculator";
+        public static readonly string ItemExpirationFormulaDescription = "Checks if item is expired";
 
-        public static readonly string AOPDocumentExpirationActionId = "ExpirationPolicy.Action";
-        public static readonly string AOPDocumentExpirationActionName = "ExpirationPolicy.Action";
-        public static readonly string AOPDocumentExpirationActionDescription = "Perform item expiration action";
+        public static readonly string ItemExpirationActionId = "ExpirationPolicy.Action";
+        public static readonly string ItemExpirationActionName = "ExpirationPolicy.Action";
+        public static readonly string ItemExpirationActionDescription = "Perform item expiration action";
 		
         public ExpirationPolicy()
             : base()
         {
             _expirationDateCalculator = new ExpirationDateCalculator(
-               ExpirationPolicy.AOPDocumentExpirationFormulaId,
-               ExpirationPolicy.AOPDocumentExpirationFormulaName,
-               ExpirationPolicy.AOPDocumentExpirationFormulaDescription);
+               ExpirationPolicy.ItemExpirationFormulaId,
+               ExpirationPolicy.ItemExpirationFormulaName,
+               ExpirationPolicy.ItemExpirationFormulaDescription);
 
             _expirationAction = new ExpirationAction(
-                ExpirationPolicy.AOPDocumentExpirationActionId,
-                ExpirationPolicy.AOPDocumentExpirationActionName,
-                ExpirationPolicy.AOPDocumentExpirationActionDescription);
+                ExpirationPolicy.ItemExpirationActionId,
+                ExpirationPolicy.ItemExpirationActionName,
+                ExpirationPolicy.ItemExpirationActionDescription);
         }
     }
 }
